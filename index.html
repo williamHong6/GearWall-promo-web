@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GearWall</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell" aria-label="GearWall promotional playground">
+      <nav class="top-controls" aria-label="Page controls">
+        <div class="segmented-control" role="group" aria-label="Language">
+          <button class="segmented-option active" data-language="en" type="button">EN</button>
+          <button class="segmented-option" data-language="zh" type="button">中文</button>
+        </div>
+
+        <div class="segmented-control currency-control" role="group" aria-label="Currency">
+          <button class="segmented-option active" data-currency="USD" type="button">$USD</button>
+          <button class="segmented-option" data-currency="CNY" type="button">¥CNY</button>
+          <button class="segmented-option" data-currency="CAD" type="button">$CAD</button>
+          <button class="segmented-option" data-currency="EUR" type="button">€EUR</button>
+        </div>
+      </nav>
+
+      <section class="hero" aria-label="Interactive GearWall demo">
+        <p class="eyebrow" data-i18n="eyebrow">Interactive gear wall</p>
+        <h1>
+          <span data-i18n="titleMain">GearWall</span>
+          <span class="title-sub" data-i18n="titleSub">A cleaner home for your gear.</span>
+        </h1>
+
+        <div class="ghost-word ghost-price" data-stat-ghost>$0</div>
+        <div class="ghost-word ghost-brand">GearWall</div>
+
+        <div class="value-pill" aria-live="polite">
+          <span data-i18n="valueLabel">Total value</span>
+          <strong data-value-output>$0</strong>
+        </div>
+
+        <div class="board-stage" data-board-stage>
+          <div class="board-grid" data-board-grid aria-label="Drop gear here">
+            <div class="board-tile" style="--x: 2; --y: 0"></div>
+            <div class="board-tile" style="--x: 3; --y: 0"></div>
+            <div class="board-tile" style="--x: 1; --y: 1"></div>
+            <div class="board-tile" style="--x: 2; --y: 1"></div>
+            <div class="board-tile" style="--x: 3; --y: 1"></div>
+            <div class="board-tile" style="--x: 4; --y: 1"></div>
+            <div class="board-tile" style="--x: 5; --y: 1"></div>
+            <div class="board-tile" style="--x: 0; --y: 2"></div>
+            <div class="board-tile" style="--x: 1; --y: 2"></div>
+            <div class="board-tile" style="--x: 2; --y: 2"></div>
+            <div class="board-tile" style="--x: 3; --y: 2"></div>
+            <div class="board-tile" style="--x: 4; --y: 2"></div>
+            <div class="board-tile" style="--x: 1; --y: 3"></div>
+            <div class="board-tile" style="--x: 3; --y: 3"></div>
+            <div class="board-tile" style="--x: 4; --y: 3"></div>
+            <div class="board-tile" style="--x: 5; --y: 3"></div>
+          </div>
+          <p class="drop-hint" data-i18n="dropHint">Drag gear onto the wall</p>
+        </div>
+
+        <a class="store-button" href="#" aria-label="Download on the App Store">
+          <span data-i18n="storeButton">App Store download</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h13m-5-5 5 5-5 5" />
+          </svg>
+        </a>
+      </section>
+
+      <section class="gear-dock" aria-label="Draggable gear">
+        <button class="gear-card" type="button" data-gear="snowboard" data-value="720" data-w="1" data-h="3">
+          <img src="./assets/snowboard.png" alt="Snowboard" draggable="false" />
+        </button>
+        <button class="gear-card tall" type="button" data-gear="skis" data-value="940" data-w="1" data-h="3">
+          <img src="./assets/skis.png" alt="Skis" draggable="false" />
+        </button>
+        <button class="gear-card thin" type="button" data-gear="poles" data-value="160" data-w="1" data-h="2">
+          <img src="./assets/poles.png" alt="Ski poles" draggable="false" />
+        </button>
+        <button class="gear-card small" type="button" data-gear="goggles" data-value="220" data-w="1" data-h="1">
+          <img src="./assets/goggles-wide.png" alt="Goggles" draggable="false" />
+        </button>
+        <button class="gear-card small" type="button" data-gear="helmet" data-value="260" data-w="1" data-h="1">
+          <img src="./assets/helmet.png" alt="Helmet" draggable="false" />
+        </button>
+        <button class="gear-card small" type="button" data-gear="binding" data-value="320" data-w="1" data-h="1">
+          <img src="./assets/binding.png" alt="Binding" draggable="false" />
+        </button>
+        <button class="gear-card small" type="button" data-gear="backpack" data-value="240" data-w="1" data-h="1">
+          <img src="./assets/backpack.png" alt="Backpack" draggable="false" />
+        </button>
+        <button class="gear-card small" type="button" data-gear="boot" data-value="420" data-w="1" data-h="1">
+          <img src="./assets/boot.png" alt="Boot" draggable="false" />
+        </button>
+        <button class="gear-card small" type="button" data-gear="glove" data-value="120" data-w="1" data-h="1">
+          <img src="./assets/glove.png" alt="Glove" draggable="false" />
+        </button>
+        <button class="gear-card jacket" type="button" data-gear="jacket" data-value="680" data-w="2" data-h="2">
+          <img src="./assets/jacket.png" alt="Jacket" draggable="false" />
+        </button>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
