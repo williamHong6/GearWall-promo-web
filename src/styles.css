@@ -1,0 +1,590 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #111111;
+  background: #ffffff;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  --accent: #b6ef4e;
+  --ink-soft: rgba(17, 17, 17, 0.44);
+  --surface: rgba(255, 255, 255, 0.82);
+  --line: rgba(17, 17, 17, 0.08);
+  --shadow: 0 22px 55px rgba(0, 0, 0, 0.12);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+button,
+a {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-shell {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: clamp(18px, 2vw, 28px);
+  isolation: isolate;
+}
+
+.top-controls {
+  position: fixed;
+  top: max(18px, env(safe-area-inset-top));
+  left: 50%;
+  z-index: 20;
+  display: flex;
+  gap: 8px;
+  transform: translateX(-50%);
+}
+
+.segmented-control {
+  display: inline-grid;
+  grid-auto-flow: column;
+  gap: 4px;
+  align-items: center;
+  padding: 4px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 999px;
+  background: rgba(245, 245, 245, 0.72);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(18px);
+}
+
+.segmented-option {
+  min-width: 48px;
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 13px;
+  color: rgba(17, 17, 17, 0.62);
+  background: transparent;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.segmented-option:hover {
+  transform: translateY(-1px);
+}
+
+.segmented-option.active {
+  color: #111111;
+  background: var(--accent);
+}
+
+.currency-control {
+  min-width: 270px;
+}
+
+.currency-control .segmented-option {
+  min-width: 62px;
+}
+
+.hero {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  min-height: calc(100svh - 56px);
+  place-items: center;
+  padding: clamp(68px, 8vh, 110px) 0 clamp(92px, 14vh, 150px);
+}
+
+.eyebrow {
+  position: absolute;
+  top: clamp(58px, 9vh, 86px);
+  left: 50%;
+  margin: 0;
+  color: rgba(17, 17, 17, 0.62);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transform: translateX(-50%);
+}
+
+h1 {
+  position: absolute;
+  top: clamp(78px, 11vh, 108px);
+  left: 50%;
+  z-index: 4;
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+h1 span:first-child {
+  font-size: clamp(18px, 1.55vw, 24px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.title-sub {
+  color: rgba(17, 17, 17, 0.58);
+  font-size: clamp(11px, 0.82vw, 13px);
+  font-weight: 500;
+}
+
+.ghost-word {
+  position: absolute;
+  z-index: 0;
+  user-select: none;
+  color: rgba(17, 17, 17, 0.035);
+  font-size: clamp(118px, 22vw, 280px);
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  line-height: 0.86;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.ghost-price {
+  top: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ghost-brand {
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.value-pill {
+  position: absolute;
+  top: clamp(124px, 17vh, 178px);
+  left: 50%;
+  z-index: 3;
+  display: grid;
+  min-width: 210px;
+  gap: 4px;
+  padding: 13px 22px;
+  border: 1px solid rgba(17, 17, 17, 0.06);
+  border-radius: 999px;
+  color: #111111;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
+  backdrop-filter: blur(20px);
+  transform: translateX(-50%);
+}
+
+.value-pill span {
+  color: rgba(17, 17, 17, 0.46);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.value-pill strong {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.board-stage {
+  position: relative;
+  z-index: 2;
+  width: min(calc(100vw - 48px), 760px);
+  aspect-ratio: 2 / 1;
+  border-radius: 0;
+  transition: transform 240ms ease, filter 240ms ease;
+}
+
+.board-stage.is-active {
+  transform: scale(1.012);
+  filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.1));
+}
+
+.board-grid {
+  position: absolute;
+  inset: 0;
+}
+
+.board-tile {
+  position: absolute;
+  left: calc(var(--x) * 100% / 6);
+  top: calc(var(--y) * 100% / 3);
+  width: calc(100% / 6);
+  height: calc(100% / 3);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  background-color: #f4f4f2;
+  background-image: url("/assets/pegboard.png");
+  background-size: cover;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74), 0 4px 10px rgba(0, 0, 0, 0.09);
+}
+
+.drop-hint {
+  position: absolute;
+  right: 10px;
+  bottom: -30px;
+  margin: 0;
+  color: rgba(17, 17, 17, 0.36);
+  font-size: 12px;
+  font-weight: 650;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.board-stage.is-active .drop-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.placed-gear {
+  position: absolute;
+  left: calc((var(--x) + var(--w) / 2) * 100% / 6);
+  top: calc((var(--y) + var(--h) / 2) * 100% / 3);
+  z-index: 4;
+  display: grid;
+  width: calc(var(--w) * 100% / 6);
+  height: calc(var(--h) * 100% / 3);
+  place-items: center;
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.18));
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.placed-gear img {
+  display: block;
+  max-width: 92%;
+  max-height: 92%;
+  object-fit: contain;
+  user-select: none;
+}
+
+.placed-snowboard img,
+.placed-skis img {
+  width: calc(100% / var(--w));
+  height: calc(100% * var(--w));
+  max-width: none;
+  max-height: none;
+  transform: rotate(90deg);
+}
+
+.placed-poles img {
+  max-height: 94%;
+}
+
+.placed-jacket img {
+  max-width: 80%;
+  max-height: 86%;
+}
+
+.store-button {
+  position: absolute;
+  bottom: clamp(26px, 7vh, 70px);
+  left: 50%;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 178px;
+  height: 44px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 999px;
+  color: #111111;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(18px);
+  transform: translateX(-50%);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.store-button:hover {
+  background: rgba(255, 255, 255, 0.92);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.store-button svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.gear-dock {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 7;
+  height: clamp(170px, 23vh, 240px);
+  pointer-events: none;
+}
+
+.gear-card {
+  position: absolute;
+  z-index: 8;
+  display: grid;
+  width: var(--dock-w, 130px);
+  height: var(--dock-h, 130px);
+  place-items: center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+  pointer-events: auto;
+  filter: drop-shadow(0 17px 22px rgba(0, 0, 0, 0.16));
+  transition: opacity 180ms ease, transform 180ms ease, filter 180ms ease;
+}
+
+.gear-card:active {
+  cursor: grabbing;
+}
+
+.gear-card img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+.gear-card.is-hidden {
+  opacity: 0;
+  transform: translateY(18px) scale(0.82);
+  pointer-events: none;
+}
+
+.drag-layer {
+  position: fixed;
+  z-index: 99;
+  transform: translate(-50%, -50%) scale(1.04);
+  pointer-events: auto;
+}
+
+.gear-snowboard {
+  --dock-w: clamp(84px, 9vw, 130px);
+  --dock-h: clamp(190px, 27vh, 350px);
+  left: 6vw;
+  bottom: -32px;
+  rotate: -42deg;
+}
+
+.gear-skis {
+  --dock-w: clamp(80px, 8.2vw, 120px);
+  --dock-h: clamp(200px, 30vh, 370px);
+  left: 20vw;
+  bottom: -16px;
+  rotate: 47deg;
+}
+
+.gear-poles {
+  --dock-w: clamp(64px, 6vw, 96px);
+  --dock-h: clamp(170px, 25vh, 330px);
+  left: 60vw;
+  bottom: -38px;
+  rotate: 58deg;
+}
+
+.gear-goggles {
+  --dock-w: clamp(92px, 8vw, 130px);
+  --dock-h: clamp(52px, 5vw, 78px);
+  left: 26vw;
+  bottom: 12px;
+  rotate: 3deg;
+}
+
+.gear-helmet {
+  --dock-w: clamp(82px, 7.5vw, 116px);
+  --dock-h: clamp(82px, 7.5vw, 116px);
+  left: 46vw;
+  bottom: 34px;
+  rotate: -16deg;
+}
+
+.gear-binding {
+  --dock-w: clamp(86px, 8vw, 126px);
+  --dock-h: clamp(86px, 8vw, 126px);
+  left: 72vw;
+  bottom: 18px;
+  rotate: -27deg;
+}
+
+.gear-backpack {
+  --dock-w: clamp(84px, 8vw, 122px);
+  --dock-h: clamp(92px, 9vw, 136px);
+  left: 83vw;
+  bottom: -22px;
+  rotate: 10deg;
+}
+
+.gear-boot {
+  --dock-w: clamp(80px, 8vw, 126px);
+  --dock-h: clamp(90px, 9vw, 138px);
+  left: 35vw;
+  bottom: -22px;
+  rotate: -22deg;
+}
+
+.gear-glove {
+  --dock-w: clamp(54px, 5vw, 80px);
+  --dock-h: clamp(86px, 8vw, 122px);
+  left: 52vw;
+  bottom: -4px;
+  rotate: 16deg;
+}
+
+.gear-jacket {
+  --dock-w: clamp(100px, 10vw, 148px);
+  --dock-h: clamp(120px, 13vw, 184px);
+  left: 10vw;
+  bottom: -58px;
+  rotate: -4deg;
+}
+
+@media (max-width: 880px) {
+  .page-shell {
+    min-height: 100svh;
+    padding: 16px;
+  }
+
+  .top-controls {
+    top: max(12px, env(safe-area-inset-top));
+    width: calc(100vw - 24px);
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .segmented-option {
+    min-width: 40px;
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+  .currency-control {
+    min-width: 0;
+  }
+
+  .currency-control .segmented-option {
+    min-width: 48px;
+  }
+
+  .hero {
+    min-height: 72svh;
+    padding-top: 82px;
+    padding-bottom: 74px;
+  }
+
+  .eyebrow {
+    top: 70px;
+    width: 100%;
+    text-align: center;
+  }
+
+  h1 {
+    top: 94px;
+  }
+
+  .value-pill {
+    top: 134px;
+    min-width: 170px;
+    padding: 10px 18px;
+  }
+
+  .value-pill strong {
+    font-size: 20px;
+  }
+
+  .board-stage {
+    width: min(calc(100vw - 26px), 560px);
+  }
+
+  .ghost-word {
+    font-size: clamp(86px, 30vw, 150px);
+  }
+
+  .ghost-price {
+    top: 18vh;
+  }
+
+  .ghost-brand {
+    bottom: 20vh;
+  }
+
+  .gear-dock {
+    height: 190px;
+  }
+
+  .store-button {
+    bottom: 18px;
+  }
+}
+
+@media (max-width: 560px) {
+  .top-controls {
+    flex-wrap: wrap;
+  }
+
+  .hero {
+    min-height: 70svh;
+    padding-top: 108px;
+  }
+
+  .eyebrow {
+    top: 106px;
+  }
+
+  h1 {
+    top: 130px;
+  }
+
+  .value-pill {
+    top: 176px;
+  }
+
+  .board-stage {
+    width: min(calc(100vw - 20px), 440px);
+  }
+
+  .gear-snowboard {
+    left: 2vw;
+    bottom: -44px;
+  }
+
+  .gear-skis {
+    left: 24vw;
+  }
+
+  .gear-poles {
+    left: 64vw;
+  }
+
+  .gear-binding {
+    left: 79vw;
+  }
+
+  .gear-backpack {
+    left: 88vw;
+  }
+
+  .gear-jacket {
+    left: 7vw;
+    bottom: -78px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+}
