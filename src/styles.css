@@ -219,10 +219,24 @@ h1 span:first-child {
   width: calc(var(--w) * 100% / 6);
   height: calc(var(--h) * 100% / 3);
   place-items: center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: grab;
   filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.18));
   transform: translate(-50%, -50%);
-  pointer-events: none;
+  pointer-events: auto;
+  touch-action: none;
   container-type: size;
+}
+
+.placed-gear:active {
+  cursor: grabbing;
+}
+
+.placed-gear.is-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .placed-gear img {

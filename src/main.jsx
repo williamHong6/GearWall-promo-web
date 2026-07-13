@@ -121,6 +121,10 @@ function App() {
     const metrics = stageMetrics();
     if (!metrics) return null;
     const { rect, tile } = metrics;
+    const isInsideBoard =
+      pointerX >= rect.left && pointerX <= rect.right && pointerY >= rect.top && pointerY <= rect.bottom;
+    if (!isInsideBoard) return null;
+
     const rawX = Math.round((pointerX - rect.left) / tile - item.w / 2);
     const rawY = Math.round((pointerY - rect.top) / tile - item.h / 2);
     const occupied = occupiedCells(item.id);
@@ -177,19 +181,26 @@ function App() {
   function renderBoardGear(item) {
     const cell = placed[item.id];
     if (!cell) return null;
+    const isDragging = drag?.id === item.id;
     return (
-      <div
+      <button
         key={item.id}
-        className={`placed-gear placed-${item.id}`}
+        className={`placed-gear placed-${item.id} ${isDragging ? "is-hidden" : ""}`}
+        type="button"
+        aria-label={`Move ${item.alt}`}
         style={{
           "--x": cell.x,
           "--y": cell.y,
           "--w": item.w,
           "--h": item.h
         }}
+        onPointerDown={(event) => beginDrag(event, item)}
+        onPointerMove={moveDrag}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
       >
         <img src={item.src} alt="" draggable="false" />
-      </div>
+      </button>
     );
   }
 
