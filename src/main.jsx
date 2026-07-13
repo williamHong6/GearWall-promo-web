@@ -42,8 +42,8 @@ const board = {
 };
 
 const gear = [
-  { id: "snowboard", src: "/assets/snowboard.png", alt: "Snowboard", value: 720, w: 3, h: 1 },
-  { id: "skis", src: "/assets/skis.png", alt: "Skis", value: 940, w: 3, h: 1 },
+  { id: "snowboard", src: "/assets/snowboard.png", alt: "Snowboard", value: 720, w: 1, h: 3 },
+  { id: "skis", src: "/assets/skis.png", alt: "Skis", value: 940, w: 4, h: 1 },
   { id: "poles", src: "/assets/poles.png", alt: "Ski poles", value: 160, w: 1, h: 2 },
   { id: "goggles", src: "/assets/goggles-wide.png", alt: "Goggles", value: 220, w: 1, h: 1 },
   { id: "helmet", src: "/assets/helmet.png", alt: "Helmet", value: 260, w: 1, h: 1 },
@@ -228,11 +228,6 @@ function App() {
 
         <div className="ghost-word ghost-price">{formattedValue}</div>
         <div className="ghost-word ghost-brand">GearWall</div>
-
-        <div className="value-pill" aria-live="polite">
-          <span>{t.valueLabel}</span>
-          <strong>{formattedValue}</strong>
-        </div>
 
         <div className={`board-stage ${drag ? "is-active" : ""}`} ref={stageRef}>
           <div className="board-grid" aria-label="Drop gear here">
