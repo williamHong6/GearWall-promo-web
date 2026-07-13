@@ -33,7 +33,7 @@ a {
 .page-shell {
   position: relative;
   min-height: 100svh;
-  overflow: hidden;
+  overflow-x: hidden;
   padding: clamp(18px, 2vw, 28px);
   isolation: isolate;
 }
@@ -317,6 +317,69 @@ h1 span:first-child {
   stroke-width: 1.8;
 }
 
+.contact-section {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  width: min(calc(100vw - 48px), 520px);
+  min-height: 38svh;
+  margin: -8vh auto 0;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  padding: 96px 0 170px;
+  text-align: center;
+}
+
+.contact-eyebrow {
+  margin: 0;
+  color: rgba(17, 17, 17, 0.44);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.contact-section h2 {
+  margin: 0;
+  color: #111111;
+  font-size: clamp(24px, 3vw, 42px);
+  font-weight: 850;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+}
+
+.contact-section p:not(.contact-eyebrow) {
+  max-width: 360px;
+  margin: 0;
+  color: rgba(17, 17, 17, 0.54);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+}
+
+.contact-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  padding: 0 22px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 999px;
+  color: #111111;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(18px);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.contact-link:hover {
+  background: rgba(255, 255, 255, 0.92);
+  transform: translateY(-2px);
+}
+
 .gear-dock {
   position: fixed;
   inset: auto 0 0;
@@ -523,6 +586,12 @@ h1 span:first-child {
 
   .store-button {
     bottom: 18px;
+  }
+
+  .contact-section {
+    width: min(calc(100vw - 32px), 420px);
+    margin-top: -3vh;
+    padding: 74px 0 150px;
   }
 }
 

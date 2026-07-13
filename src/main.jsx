@@ -9,7 +9,11 @@ const copy = {
     titleSub: "A cleaner home for your gear.",
     valueLabel: "Total value",
     dropHint: "Drag gear onto the wall",
-    storeButton: "App Store download"
+    storeButton: "App Store download",
+    contactEyebrow: "Contact us",
+    contactTitle: "Have a question about GearWall?",
+    contactBody: "Send us a note and we will get back to you.",
+    contactButton: "williamhong0503@gmail.com"
   },
   zh: {
     eyebrow: "可交互装备墙",
@@ -17,7 +21,11 @@ const copy = {
     titleSub: "你的线上装备库",
     valueLabel: "总价值",
     dropHint: "把装备拖到洞洞板上",
-    storeButton: "Apple Store 下载"
+    storeButton: "Apple Store 下载",
+    contactEyebrow: "联系我们",
+    contactTitle: "有关于 GearWall 的问题？",
+    contactBody: "发邮件给我们，我们会尽快回复。",
+    contactButton: "williamhong0503@gmail.com"
   }
 };
 
@@ -241,6 +249,15 @@ function App() {
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M5 12h13m-5-5 5 5-5 5" />
           </svg>
+        </a>
+      </section>
+
+      <section className="contact-section" id="contact" aria-label="Contact GearWall">
+        <p className="contact-eyebrow">{t.contactEyebrow}</p>
+        <h2>{t.contactTitle}</h2>
+        <p>{t.contactBody}</p>
+        <a className="contact-link" href="mailto:williamhong0503@gmail.com">
+          {t.contactButton}
         </a>
       </section>
 
