@@ -41,17 +41,19 @@ const board = {
   rows: 3
 };
 
+const publicImage = (fileName) => `${import.meta.env.BASE_URL}images/${fileName}`;
+
 const gear = [
-  { id: "snowboard", src: "/images/snowboard.png", alt: "Snowboard", value: 720, w: 1, h: 3 },
-  { id: "skis", src: "/images/skis.png", alt: "Skis", value: 940, w: 4, h: 1 },
-  { id: "poles", src: "/images/poles.png", alt: "Ski poles", value: 160, w: 1, h: 2 },
-  { id: "goggles", src: "/images/goggles-wide.png", alt: "Goggles", value: 220, w: 1, h: 1 },
-  { id: "helmet", src: "/images/helmet.png", alt: "Helmet", value: 260, w: 1, h: 1 },
-  { id: "binding", src: "/images/binding.png", alt: "Binding", value: 320, w: 1, h: 1 },
-  { id: "backpack", src: "/images/backpack.png", alt: "Backpack", value: 240, w: 1, h: 1 },
-  { id: "boot", src: "/images/boot.png", alt: "Boot", value: 420, w: 1, h: 1 },
-  { id: "glove", src: "/images/glove.png", alt: "Glove", value: 120, w: 1, h: 1 },
-  { id: "jacket", src: "/images/jacket.png", alt: "Jacket", value: 680, w: 2, h: 2 }
+  { id: "snowboard", src: publicImage("snowboard.png"), alt: "Snowboard", value: 720, w: 1, h: 3 },
+  { id: "skis", src: publicImage("skis.png"), alt: "Skis", value: 940, w: 4, h: 1 },
+  { id: "poles", src: publicImage("poles.png"), alt: "Ski poles", value: 160, w: 1, h: 2 },
+  { id: "goggles", src: publicImage("goggles-wide.png"), alt: "Goggles", value: 220, w: 1, h: 1 },
+  { id: "helmet", src: publicImage("helmet.png"), alt: "Helmet", value: 260, w: 1, h: 1 },
+  { id: "binding", src: publicImage("binding.png"), alt: "Binding", value: 320, w: 1, h: 1 },
+  { id: "backpack", src: publicImage("backpack.png"), alt: "Backpack", value: 240, w: 1, h: 1 },
+  { id: "boot", src: publicImage("boot.png"), alt: "Boot", value: 420, w: 1, h: 1 },
+  { id: "glove", src: publicImage("glove.png"), alt: "Glove", value: 120, w: 1, h: 1 },
+  { id: "jacket", src: publicImage("jacket.png"), alt: "Jacket", value: 680, w: 2, h: 2 }
 ];
 
 function App() {
@@ -205,7 +207,11 @@ function App() {
   }
 
   return (
-    <main className="page-shell" aria-label="GearWall promotional playground">
+    <main
+      className="page-shell"
+      aria-label="GearWall promotional playground"
+      style={{ "--pegboard-image": `url("${publicImage("pegboard.png")}")` }}
+    >
       <nav className="top-controls" aria-label="Page controls">
         <Segmented
           label="Language"
