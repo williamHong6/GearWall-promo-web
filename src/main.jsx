@@ -42,16 +42,16 @@ const board = {
 };
 
 const gear = [
-  { id: "snowboard", src: "/assets/snowboard.png", alt: "Snowboard", value: 720, w: 1, h: 3 },
-  { id: "skis", src: "/assets/skis.png", alt: "Skis", value: 940, w: 4, h: 1 },
-  { id: "poles", src: "/assets/poles.png", alt: "Ski poles", value: 160, w: 1, h: 2 },
-  { id: "goggles", src: "/assets/goggles-wide.png", alt: "Goggles", value: 220, w: 1, h: 1 },
-  { id: "helmet", src: "/assets/helmet.png", alt: "Helmet", value: 260, w: 1, h: 1 },
-  { id: "binding", src: "/assets/binding.png", alt: "Binding", value: 320, w: 1, h: 1 },
-  { id: "backpack", src: "/assets/backpack.png", alt: "Backpack", value: 240, w: 1, h: 1 },
-  { id: "boot", src: "/assets/boot.png", alt: "Boot", value: 420, w: 1, h: 1 },
-  { id: "glove", src: "/assets/glove.png", alt: "Glove", value: 120, w: 1, h: 1 },
-  { id: "jacket", src: "/assets/jacket.png", alt: "Jacket", value: 680, w: 2, h: 2 }
+  { id: "snowboard", src: "/images/snowboard.png", alt: "Snowboard", value: 720, w: 1, h: 3 },
+  { id: "skis", src: "/images/skis.png", alt: "Skis", value: 940, w: 4, h: 1 },
+  { id: "poles", src: "/images/poles.png", alt: "Ski poles", value: 160, w: 1, h: 2 },
+  { id: "goggles", src: "/images/goggles-wide.png", alt: "Goggles", value: 220, w: 1, h: 1 },
+  { id: "helmet", src: "/images/helmet.png", alt: "Helmet", value: 260, w: 1, h: 1 },
+  { id: "binding", src: "/images/binding.png", alt: "Binding", value: 320, w: 1, h: 1 },
+  { id: "backpack", src: "/images/backpack.png", alt: "Backpack", value: 240, w: 1, h: 1 },
+  { id: "boot", src: "/images/boot.png", alt: "Boot", value: 420, w: 1, h: 1 },
+  { id: "glove", src: "/images/glove.png", alt: "Glove", value: 120, w: 1, h: 1 },
+  { id: "jacket", src: "/images/jacket.png", alt: "Jacket", value: 680, w: 2, h: 2 }
 ];
 
 function App() {
