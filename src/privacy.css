@@ -1,0 +1,64 @@
+* { box-sizing: border-box; }
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #171a14;
+  background: #fafbf8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --accent: #b6ef4e;
+}
+body { margin: 0; min-width: 320px; }
+a { color: inherit; text-underline-offset: 4px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 3px solid #547522; outline-offset: 5px; }
+button { font: inherit; cursor: pointer; }
+.privacy-page { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
+.privacy-header { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; border-bottom: 1px solid #e1e5da; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 750; letter-spacing: -.6px; text-decoration: none; }
+.brand-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: var(--accent); font-size: 22px; }
+.language-control { display: flex; gap: 3px; padding: 4px; border: 1px solid #e1e5da; border-radius: 99px; background: #fff; }
+.language-control button { min-width: 52px; min-height: 36px; padding: 6px 12px; border: 0; border-radius: 99px; background: transparent; color: #51574a; font-size: 13px; }
+.language-control button[aria-pressed="true"] { background: var(--accent); color: #171a14; }
+.policy { max-width: 720px; margin: 0 auto; padding: 74px 0 32px; }
+.eyebrow { margin: 0 0 20px; font-size: 11px; font-weight: 700; letter-spacing: .16em; color: #5a6251; }
+h1 { margin: 0 0 16px; font-size: clamp(36px, 5vw, 56px); line-height: 1.15; letter-spacing: -.045em; }
+.updated { margin: 0 0 28px; color: #626858; font-size: 13px; }
+.intro { color: #444b3d; font-size: 17px; line-height: 1.85; }
+.policy-summary { margin: 32px 0; padding: 26px 30px; border: 1px solid #d8e5c1; border-radius: 20px; background: #eef5e2; }
+.policy-summary h2, .contents h2 { margin: 0 0 14px; font-size: 15px; }
+.policy-summary ul { display: grid; gap: 10px; margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.7; }
+.policy-summary li::marker { color: #607e2e; }
+.contents { padding: 10px 0 32px; border-bottom: 1px solid #e1e5da; }
+.contents ol { columns: 2; column-gap: 36px; margin: 0; padding-left: 22px; }
+.contents li { padding: 5px 0 5px 2px; font-size: 14px; line-height: 1.7; break-inside: avoid; }
+.contents li::marker { color: #737969; font-size: 12px; }
+.contents a { color: #465337; }
+.policy-section { padding: 32px 0; border-bottom: 1px solid #e1e5da; scroll-margin-top: 24px; }
+.policy-section:last-child { border-bottom: 0; }
+.policy-section h2 { display: flex; align-items: baseline; gap: 14px; margin: 0 0 16px; font-size: 21px; line-height: 1.5; letter-spacing: -.025em; }
+.section-number { color: #737969; font-size: 12px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.policy-section p { margin: 0 0 14px; color: #454c3e; font-size: 15px; line-height: 1.9; overflow-wrap: anywhere; }
+.policy-section p:last-child { margin-bottom: 0; }
+.policy-links { display: flex; flex-wrap: wrap; gap: 10px 24px; list-style: none; margin: 18px 0 0; padding: 0; font-size: 14px; }
+.privacy-footer { display: flex; justify-content: space-between; gap: 20px; padding: 28px 0 36px; border-top: 1px solid #e1e5da; color: #626858; font-size: 13px; }
+.skip-link { position: absolute; top: -100px; padding: 12px 20px; background: var(--accent); border-radius: 8px; z-index: 10; }
+.skip-link:focus { top: 12px; }
+@media (max-width: 600px) {
+  .privacy-page { padding: 0 22px; }
+  .privacy-header { padding: 20px 0; }
+  .brand { font-size: 18px; }
+  .policy { padding-top: 46px; }
+  .policy-summary { padding: 22px; border-radius: 16px; }
+  .contents ol { columns: 1; }
+  .policy-section h2 { gap: 10px; font-size: 19px; }
+  .privacy-footer { flex-wrap: wrap; }
+}
+@media print {
+  :root { background: #fff; }
+  .privacy-header, .contents, .skip-link, .privacy-footer { display: none; }
+  .privacy-page { padding: 0; }
+  .policy { max-width: none; padding: 0; }
+  h2 { break-after: avoid; }
+  p { orphans: 3; widows: 3; }
+}

@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
@@ -10,10 +10,10 @@ const copy = {
     valueLabel: "Total value",
     dropHint: "Drag gear onto the wall",
     storeButton: "App Store download",
-    contactEyebrow: "Contact us",
-    contactTitle: "Have a question about GearWall?",
-    contactBody: "Send us a note and we will get back to you.",
-    contactButton: "williamhong0503@gmail.com"
+    privacyEyebrow: "Your privacy",
+    privacyTitle: "Know where your data goes.",
+    privacyBody: "Learn how GearWall handles your gear, photos, and optional analytics.",
+    privacyButton: "Read our Privacy Policy"
   },
   zh: {
     eyebrow: "可交互装备墙",
@@ -22,10 +22,10 @@ const copy = {
     valueLabel: "总价值",
     dropHint: "把装备拖到洞洞板上",
     storeButton: "Apple Store 下载",
-    contactEyebrow: "联系我们",
-    contactTitle: "有关于 GearWall 的问题？",
-    contactBody: "发邮件给我们，我们会尽快回复。",
-    contactButton: "williamhong0503@gmail.com"
+    privacyEyebrow: "关于你的隐私",
+    privacyTitle: "你的数据如何被使用",
+    privacyBody: "了解 GearWall 如何处理装备资料、照片与可选的使用分析。",
+    privacyButton: "查看隐私政策"
   }
 };
 
@@ -58,11 +58,15 @@ const gear = [
 
 function App() {
   const stageRef = useRef(null);
-  const [language, setLanguage] = useState("zh");
+  const [language, setLanguage] = useState(() => new URLSearchParams(window.location.search).get("lang") === "en" ? "en" : "zh");
   const [currency, setCurrency] = useState("USD");
   const [placed, setPlaced] = useState({});
   const [drag, setDrag] = useState(null);
   const t = copy[language];
+
+  useEffect(() => {
+    document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+  }, [language]);
 
   const cells = useMemo(() => {
     const result = [];
@@ -264,14 +268,14 @@ function App() {
         </a>
       </section>
 
-      <section className="contact-section" id="contact" aria-label="Contact GearWall">
-        <p className="contact-eyebrow">{t.contactEyebrow}</p>
-        <h2>{t.contactTitle}</h2>
-        <p>{t.contactBody}</p>
-        <a className="contact-link" href="mailto:williamhong0503@gmail.com">
-          {t.contactButton}
+      <footer className="privacy-intro" aria-label={t.privacyEyebrow}>
+        <p className="privacy-eyebrow">{t.privacyEyebrow}</p>
+        <h2>{t.privacyTitle}</h2>
+        <p>{t.privacyBody}</p>
+        <a className="privacy-link" href={`${import.meta.env.BASE_URL}privacy/?lang=${language}`}>
+          {t.privacyButton}
         </a>
-      </section>
+      </footer>
 
       <section className="gear-dock" aria-label="Draggable gear">
         {gear.map((item) => (
@@ -309,6 +313,7 @@ function Segmented({ label, value, options, onChange, wide = false }) {
           key={id}
           className={`segmented-option ${value === id ? "active" : ""}`}
           type="button"
+          aria-pressed={value === id}
           onClick={() => onChange(id)}
         >
           {text}

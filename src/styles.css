@@ -317,7 +317,7 @@ h1 span:first-child {
   stroke-width: 1.8;
 }
 
-.contact-section {
+.privacy-intro {
   position: relative;
   z-index: 5;
   display: grid;
@@ -331,7 +331,7 @@ h1 span:first-child {
   text-align: center;
 }
 
-.contact-eyebrow {
+.privacy-eyebrow {
   margin: 0;
   color: rgba(17, 17, 17, 0.44);
   font-size: 12px;
@@ -340,7 +340,7 @@ h1 span:first-child {
   text-transform: uppercase;
 }
 
-.contact-section h2 {
+.privacy-intro h2 {
   margin: 0;
   color: #111111;
   font-size: clamp(24px, 3vw, 42px);
@@ -349,7 +349,7 @@ h1 span:first-child {
   line-height: 0.98;
 }
 
-.contact-section p:not(.contact-eyebrow) {
+.privacy-intro p:not(.privacy-eyebrow) {
   max-width: 360px;
   margin: 0;
   color: rgba(17, 17, 17, 0.54);
@@ -358,7 +358,7 @@ h1 span:first-child {
   line-height: 1.42;
 }
 
-.contact-link {
+.privacy-link {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
@@ -375,7 +375,7 @@ h1 span:first-child {
   transition: transform 180ms ease, background 180ms ease;
 }
 
-.contact-link:hover {
+.privacy-link:hover {
   background: rgba(255, 255, 255, 0.92);
   transform: translateY(-2px);
 }
@@ -579,7 +579,7 @@ h1 span:first-child {
     bottom: 18px;
   }
 
-  .contact-section {
+  .privacy-intro {
     width: min(calc(100vw - 32px), 420px);
     margin-top: -3vh;
     padding: 74px 0 150px;
@@ -644,3 +644,5 @@ h1 span:first-child {
     animation-duration: 0.001ms !important;
   }
 }
+
+.privacy-link:focus-visible { outline: 3px solid #547522; outline-offset: 5px; }
