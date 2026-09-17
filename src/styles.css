@@ -327,7 +327,7 @@ h1 span:first-child {
   place-items: center;
   align-content: center;
   gap: 10px;
-  padding: 96px 0 170px;
+  padding: 96px 0 260px;
   text-align: center;
 }
 
@@ -582,7 +582,7 @@ h1 span:first-child {
   .privacy-intro {
     width: min(calc(100vw - 32px), 420px);
     margin-top: -3vh;
-    padding: 74px 0 150px;
+    padding: 74px 0 240px;
   }
 }
 
