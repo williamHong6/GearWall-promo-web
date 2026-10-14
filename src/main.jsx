@@ -12,7 +12,7 @@ const copy = {
     storeButton: "App Store download",
     privacyEyebrow: "Your privacy",
     privacyTitle: "Know where your data goes.",
-    privacyBody: "Learn how GearWall handles your gear, photos, and optional analytics.",
+    privacyBody: "Use your gear wall without an account. Learn about optional Google, Apple, and email sign-in, local photos, account deletion, and separate opt-in analytics.",
     privacyButton: "Read our Privacy Policy"
   },
   zh: {
@@ -21,10 +21,10 @@ const copy = {
     titleSub: "你的线上装备库",
     valueLabel: "总价值",
     dropHint: "把装备拖到洞洞板上",
-    storeButton: "Apple Store 下载",
+    storeButton: "App Store 下载",
     privacyEyebrow: "关于你的隐私",
     privacyTitle: "你的数据如何被使用",
-    privacyBody: "了解 GearWall 如何处理装备资料、照片与可选的使用分析。",
+    privacyBody: "不登录，也能使用本地装备墙。了解可选的 Google、Apple、邮箱登录，本地照片、账户删除，以及独立选择的使用分析。",
     privacyButton: "查看隐私政策"
   }
 };
